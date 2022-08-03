@@ -5,9 +5,11 @@ const express = require("express");
 const app = express();
 const connectDB = require("./db/connect");
 const router = require("./routers/stock");
+const errorHandler = require("./middleware/errorHandler");
 
 //middlewares
 app.use(express.json()); //for posting
+app.use(errorHandler);
 
 //routes
 app.use("/api/stock", router);
